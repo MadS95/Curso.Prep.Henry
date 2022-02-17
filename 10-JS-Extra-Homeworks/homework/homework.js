@@ -61,6 +61,27 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+<<<<<<< HEAD
+  var strArray = str.split(' ')
+  var invertidaArray= [];
+  var strinvertida = '';
+  for (let i = 0; i < strArray.length; i++) {
+    for (let j = strArray[i].length - 1; j >= 0; j--) {
+      strinvertida= strinvertida + strArray[i].charAt(j);
+    }
+    invertidaArray.push(strinvertida);
+    strinvertida = '';
+  }
+  var fraseInvertida = '';
+  for (let i = 0; i < invertidaArray.length; i++) {
+    if (invertidaArray[i] !== invertidaArray[invertidaArray.length -1]) {
+    fraseInvertida = fraseInvertida + invertidaArray[i] + ' ';
+    } else {
+      fraseInvertida = fraseInvertida + invertidaArray[i];
+    }
+  }
+  return fraseInvertida;
+=======
   var mirror = '';
   for (var i = 0; i < str.length; i++) {
     if (str[i] === ' '){
@@ -74,6 +95,7 @@ function asAmirror(str) {
     }
   }
   return mirror;
+>>>>>>> 0c9c4b369d57a03066717453e1611f64b372b95a
 } 
 
 
@@ -112,9 +134,33 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+<<<<<<< HEAD
+  var arrOrd = [];
+  var lengthArr = arr.length;
+  for (let i = 0; i < lengthArr; i++) {
+    var smallerStr = arr[0];
+    var restArray = [];
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j].length < smallerStr.length){
+      smallerStr = arr[j];
+      }
+    }
+    arrOrd.push(smallerStr);
+    for (let k = 0; k < arr.length; k++) {
+      if (arr[k] !== smallerStr){
+        restArray.push(arr[k]);
+      }
+    }
+    arr = restArray;
+  } 
+  return arrOrd; 
+} sortArray(["You", "are", "beautiful", "looking"]); 
+=======
   
 }
+>>>>>>> 0c9c4b369d57a03066717453e1611f64b372b95a
 
+ 
 
 function buscoInterseccion(arreglo1, arreglo2){
   //Existen dos arrays, cada uno con 5 números. A partir de ello, escribir una función que permita 
@@ -138,4 +184,8 @@ module.exports = {
    deleteAbc,
    sortArray,
    buscoInterseccion,
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 0c9c4b369d57a03066717453e1611f64b372b95a
