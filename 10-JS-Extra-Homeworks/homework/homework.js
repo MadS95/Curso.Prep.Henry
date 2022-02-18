@@ -25,10 +25,10 @@ function numberOfCharacters(string) {
   //Escribe tu código aquí
   var objeto = {};
   for(var i = 0; i < string.length; i++) {
-    if (objeto.hasOwnProperty(string[i])){
-      objeto[string[i]]++;
-    } else {
+    if (!objeto.hasOwnProperty(string[i])){
       objeto[string[i]] = 1;
+    } else {
+      objeto[string[i]]++;
     }
   }
   return objeto;
@@ -61,19 +61,26 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
-  var mirror = '';
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] === ' '){
-        for (var j = i - 1; j >= 0; j--){
-          mirror = mirror + str [j];
-          if (str[j + 1] === ' '){
-          break;
-        }
-      } 
-      mirror = mirror + ' ';
+
+  var strArray = str.split(' ')
+  var invertidaArray= [];
+  var strinvertida = '';
+  for (let i = 0; i < strArray.length; i++) {
+    for (let j = strArray[i].length - 1; j >= 0; j--) {
+      strinvertida= strinvertida + strArray[i].charAt(j);
+    }
+    invertidaArray.push(strinvertida);
+    strinvertida = '';
+  }
+  var fraseInvertida = '';
+  for (let i = 0; i < invertidaArray.length; i++) {
+    if (invertidaArray[i] !== invertidaArray[invertidaArray.length -1]) {
+    fraseInvertida = fraseInvertida + invertidaArray[i] + ' ';
+    } else {
+      fraseInvertida = fraseInvertida + invertidaArray[i];
     }
   }
-  return mirror;
+  return fraseInvertida;
 } 
 
 
@@ -112,8 +119,26 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
-  
-}
+  var arrOrd = [];
+  var lengthArr = arr.length;
+  for (let i = 0; i < lengthArr; i++) {
+    var smallerStr = arr[0];
+    var restArray = [];
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j].length < smallerStr.length){
+      smallerStr = arr[j];
+      }
+    }
+    arrOrd.push(smallerStr);
+    for (let k = 0; k < arr.length; k++) {
+      if (arr[k] !== smallerStr){
+        restArray.push(arr[k]);
+      }
+    }
+    arr = restArray;
+  } 
+  return arrOrd; 
+} 
 
 
 function buscoInterseccion(arreglo1, arreglo2){
@@ -122,7 +147,16 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
-}
+  var arr = [];
+  for (let i = 0; i < arreglo1.length; i++){
+    for (let j = 0; j < arreglo2.length; j++){
+      if (arreglo1[i] === arreglo2[j]) {
+        arr.push(arreglo1[i])
+       }
+    }
+  }
+  return arr;
+} 
 
 
 
@@ -139,3 +173,4 @@ module.exports = {
    sortArray,
    buscoInterseccion,
 };
+
