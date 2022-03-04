@@ -88,8 +88,8 @@ var objeto = {
 
     // Instancia:
     var valorInstanciado = new Clase(//Se ingresa el parametro que reemplaza a "".this");
-
-    // prototype: Creo que permite establecer un mecanismo a través del cual métodos credor heredan propiedades de objetos de clase.
+// Al crear un objeto instanciando al constructor, el objeto hereda la propiedad __proto__ que oficia de link al constructor.prototype
+    // prototype: Creo que permite establecer un mecanismo a través del cual métodos creador heredan propiedades de objetos de clase.
     Clase.prototype.prototipo = function(){
         // Se establece la funcionalidad del método heredando objetos de clase a través de "this.clave".
     }
